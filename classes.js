@@ -412,7 +412,7 @@ class Server {
 				}
 			}
 
-			this.send(client, { type: 'shot', data: { players: this.copyPlayers()} });
+			this.send(client, { type: 'shot', data: { players: this.copyPlayers() } });
 			// console.log(this.pings[client.selfId] * (1000 / 60), 'ms');
 			// const clientTick = this.presentTick() - this.pings[client.selfId];
 			// console.log(clientTick, 'client tick', this.presentTick(), 'server tick')
