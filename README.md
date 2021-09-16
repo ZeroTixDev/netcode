@@ -15,3 +15,5 @@
 #### Blue Circle: Lag comepnsated player at max 400ms behind
 ### This project is completely open source and you are free to use any of this code in your projects (credit is appreciated)
 #### Contact:  (most active) Discord: ZeroTix#6300
+
+## To implement: Interpolation and Time Travel
