@@ -9,7 +9,7 @@
 #### Click (on the client's canvas) and when the player touches the other player, the other player respawns!
 ### Overlays
 #### Orange Circle: Where the players were positioned when the "click" happened
-#### White Circle (default): Where the player's lag compensated hitbox is
+#### White Circle : Where the player's lag compensated hitbox is
 #### Red Circle (default): The client's own player
 #### Green Circle: Where the player is according to the server in realtime
 #### Blue Circle: Lag comepnsated player at max 400ms behind

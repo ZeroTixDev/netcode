@@ -144,7 +144,7 @@ function renderView(data, canvas, ctx) {
 			ctx.fill();
 		}
 	}
-	if (data.capture != null) {
+	if (data.capture != null && showServerOnClient) {
 		for (const playerId of Object.keys(data.capture)) {
 			if (Number(playerId) === data.selfId) continue;
 			const player = data.capture[playerId];

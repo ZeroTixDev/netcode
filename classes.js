@@ -165,8 +165,12 @@ function copyInput(input) {
 }
 
 function applyInput(player, input) {
-	player.x += (input.right - input.left) * 5;
-	player.y += (input.down - input.up) * 5;
+	player.xv += (input.right - input.left) * 0.5;
+	player.yv += (input.down - input.up) * 0.5;
+	player.x += player.xv;
+	player.y += player.yv;
+	player.xv *= 0.92;
+	player.yv *= 0.92;
 	boundPlayer(player);
 }
 
@@ -195,16 +199,20 @@ function collidePlayers(players) {
 function boundPlayer(player) {
 	if (player.x - player.radius < 0) {
 		player.x = player.radius;
+		player.xv = 0;
 	}
 	if (player.x + player.radius > window.innerWidth / 3) {
 		player.x = window.innerWidth / 3 - player.radius;
+		player.xv = 0;
 	}
 
 	if (player.y - player.radius < 0) {
 		player.y = player.radius;
+		player.yv = 0;
 	}
 	if (player.y + player.radius > window.innerHeight) {
 		player.y = window.innerHeight - player.radius;
+		player.yv = 0;
 	}
 }
 
@@ -212,11 +220,15 @@ class CPlayer {
 	constructor(pack) {
 		this.x = pack.x;
 		this.y = pack.y;
+		this.xv = pack.xv;
+		this.yv = pack.yv;
 		this.radius = pack.radius;
 	}
 	Snap(data) {
 		this.x = data.x;
 		this.y = data.y;
+		this.xv = data.xv;
+		this.yv = data.yv;
 		this.radius = data.radius;
 	}
 }
@@ -226,16 +238,22 @@ class Player {
 		this.x = Math.round(window.innerWidth / 6);
 		this.y = Math.round(Math.random() * window.innerHeight);
 		this.radius = 30;
+		this.xv = 0;
+		this.yv = 0;
 	}
 	respawn() {
 		this.x = Math.round(window.innerWidth / 6);
 		this.y = Math.round(Math.random() * window.innerHeight);
+		this.xv = 0;
+		this.yv = 0;
 	}
 	pack() {
 		return {
 			x: this.x,
 			y: this.y,
-			radius: this.radius
+			radius: this.radius,
+			xv: this.xv, 
+			yv: this.yv,
 		};
 	}
 }
